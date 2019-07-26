@@ -23,8 +23,8 @@ export const getSmurfs = () => dispatch => {
     .catch(error => {
       console.log("getSmurfs error", error);
       dispatch({
-        type: FETCH_SMURF_ERROR,
-        payload: error.response.data.error
+        type: FETCH_SMURF_ERROR
+        // payload: error.response.data.error
       });
     });
 };
