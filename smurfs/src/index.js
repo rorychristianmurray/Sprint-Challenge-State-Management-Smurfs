@@ -9,15 +9,14 @@ import { createStore, applyMiddleware } from "redux";
 import { Provider } from "react-redux";
 import rooterReducer from "./components/reducers";
 
+const store = createStore(
+  rooterReducer,
+  composeWithDevTools(applyMiddleware(thunk, logger))
+);
 const AppWithProvider = (
   <Provider store={store}>
     <App />
   </Provider>
-);
-
-const store = createStore(
-  rooterReducer,
-  composeWithDevTools(applyMiddleware(thunk, logger))
 );
 
 ReactDOM.render(AppWithProvider, document.getElementById("root"));

@@ -1,3 +1,17 @@
+import axios from "axios";
+
+import {
+  FETCH_SMURF_START,
+  FETCH_SMURF_SUCCESS,
+  FETCH_SMURF_ERROR,
+  ADD_SMURF_START,
+  ADD_SMURF_SUCCESS,
+  ADD_SMURF_ERROR,
+  DELETE_SMURF_START,
+  DELETE_SMURF_SUCCESS,
+  DELETE_SMURF_ERROR
+} from "../actions/types";
+
 export const getSmurfs = () => dispatch => {
   dispatch({ type: FETCH_SMURF_START });
   axios
