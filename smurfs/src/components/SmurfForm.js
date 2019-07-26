@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { addSmurf } from "../actions";
+import { addSmurf } from "../components/actions";
 import { connect } from "react-redux";
 
 const SmurfForm = props => {
@@ -8,6 +8,23 @@ const SmurfForm = props => {
     age: "",
     height: ""
   });
+  console.log("SmurfForm newSmurf", newSmurf);
+  const handleChanges = event => {
+    event.preventDefault();
+    // console.log("handleChanges newSmurf", newSmurf);
+    setNewSmurf({ ...newSmurf, [event.target.name]: event.target.value });
+  };
+
+  const addSmurf = event => {
+    event.preventDefault();
+    props.addSmurf(newSmurf);
+    setNewSmurf({
+      name: "",
+      age: "",
+      height: ""
+    });
+  };
+
   return (
     <form onSubmit={addSmurf} className="smurf-form">
       <input
@@ -34,21 +51,6 @@ const SmurfForm = props => {
       <button className="btn">Add Smurf</button>
     </form>
   );
-
-  const handleChanges = event => {
-    event.preventDefault();
-    props.setNewSmurf(event.target.value);
-  };
-
-  const addSmurf = event => {
-    event.preventDefault();
-    const newSmurf = {
-      name: state.name,
-      age: state.age,
-      height: state.height
-    };
-    props.addSmurf(newSmurf);
-  };
 };
 
 export default connect(
